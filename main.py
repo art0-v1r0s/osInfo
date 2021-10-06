@@ -54,15 +54,47 @@ def get_interfaces():
     return nics
 
 
+def switch():
+    option = int(input("Que souhaitez vous recuperé : \n"
+                       "1 : Hostname\n"
+                       "2 : Ip\n"
+                       "3 : Hardware\n"
+                       "4 : Mac\n"
+                       "5 : Gateway\n"))
+    if option == 1:
+        result = "hostname :"
+        return result
+
+    elif option == 2:
+        result = "ip :"
+        return result
+
+    elif option == 3:
+        result = "hardware :"
+        return result
+
+    elif option == 4:
+        result = "mac :"
+        return result
+
+    elif option == 5:
+        result = "gateway :"
+        return result
+
+    else:
+        print("Incorrect option")
+
+
 if len(sys.argv) > 1:
     if sys.argv[1] == "-h":
         print(
-            "###########################"
-            "#         INFO            #"
-            "#          OS             #"
-            "###########################"
+            "###########################\n"
+            "#         INFO            #\n"
+            "#          OS             #\n"
+            "###########################\n"
             "welcome in Info Os helper\n"
             "this programme put the network info in a file\n"
+            "thanks to execute the programme\n"
         )
         exit()
 for root, directories, files in os.walk("."):
@@ -87,12 +119,15 @@ if "Windows" in OS:
         fichier.write('\n')
         for k, v in nic.items():
             fichier.write('%s : %s \n' % (k, v))
-            print('%s : %s' % (k, v))
+            #print('%s : %s' % (k, v))
 fichier.close()
+
 fichier = open("ipconfig.txt", "r")
 lignes = fichier.readlines()
+
+choix = switch()
 for ligne in lignes:
-    if "ip : " in ligne:
+    if choix in ligne:
         print(ligne)
 fichier.close()
 # ligne = ip.readline()
