@@ -142,8 +142,9 @@ if len(sys.argv) >= 1:
         addresses = []
 
         """ On définit une plage d'adresses IP à scanner """
+        network = input("entre le reseau que vous souhaitez scanner (192.168.1.) :")
         for ping in range(1, 254):
-            addresses.append("10.33.2." + str(ping))
+            addresses.append(network + str(ping))
 
         threads = []
 
